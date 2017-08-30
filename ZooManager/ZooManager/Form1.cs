@@ -16,5 +16,10 @@ namespace ZooManager
         {
             InitializeComponent();
         }
+
+        public Form2()
+        {}
+
+
     }
 }

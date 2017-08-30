@@ -1,0 +1,2 @@
+C:\Users\lohru\OneDrive\Documents\Visual Studio 2015\Projects\ZooManager\ZooManager\bin\Debug\ZooManager.exe.config
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\ZooManager.exe.config

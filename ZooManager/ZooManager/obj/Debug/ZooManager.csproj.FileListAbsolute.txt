@@ -1,2 +1,13 @@
 C:\Users\lohru\OneDrive\Documents\Visual Studio 2015\Projects\ZooManager\ZooManager\bin\Debug\ZooManager.exe.config
 C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\ZooManager.exe.config
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\ZooManager.exe
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\ZooManager.pdb
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\MetroFramework.Design.dll
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\MetroFramework.dll
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.csprojResolveAssemblyReference.cache
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.ZooManager.resources
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.Properties.Resources.resources
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.csproj.GenerateResource.Cache
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.exe
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.pdb

@@ -44,13 +44,15 @@ namespace ZooManager
         private void loginButton_Click(object sender, EventArgs e)
         {
             metroLabel1.Visible = true;
-            logoutButton.Visible = false;
+            loginButton.Visible = false;
+            LoginForm frm = new LoginForm();
+            frm.Show();
         }
 
-        private void metroLabel1_Click(object sender, EventArgs e)
+        private void logoutButton_Click(object sender, EventArgs e)
         {
             metroLabel1.Visible = false;
-            logoutButton.Visible = true;
+            loginButton.Visible = true;
         }
     }
 }

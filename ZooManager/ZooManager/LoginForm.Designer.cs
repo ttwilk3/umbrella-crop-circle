@@ -196,6 +196,7 @@
             this.Name = "LoginForm";
             this.Opacity = 0.9D;
             this.Resizable = false;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "LoginForm";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.LoginForm_Load);

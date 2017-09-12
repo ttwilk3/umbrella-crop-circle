@@ -12,3 +12,5 @@ C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug
 C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.exe
 C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.pdb
 C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\obj\Debug\ZooManager.LoginForm.resources
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\Zoo.mdf
+C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\bin\Debug\Zoo_log.ldf

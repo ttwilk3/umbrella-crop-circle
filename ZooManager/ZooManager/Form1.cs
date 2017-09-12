@@ -43,16 +43,33 @@ namespace ZooManager
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            metroLabel1.Visible = true;
-            loginButton.Visible = false;
-            LoginForm frm = new LoginForm();
-            frm.Show();
+            using (LoginForm frm = new LoginForm())
+            {
+                frm.ShowDialog(this);
+                loggedInLabel.Text = "Welcome " + frm.LoggedIn;
+            }
+
+            if (loggedInLabel.Text.Length > 0)
+            {
+                loggedInLabel.Visible = true;
+                loginButton.Visible = false;
+
+                insertButton.Visible = true;
+                deleteButton.Visible = true;
+                updateButton.Visible = true;
+            }
+            
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            metroLabel1.Visible = false;
+            loggedInLabel.Text = "";
+            loggedInLabel.Visible = false;
             loginButton.Visible = true;
+
+            insertButton.Visible = false;
+            deleteButton.Visible = false;
+            updateButton.Visible = false;
         }
     }
 }

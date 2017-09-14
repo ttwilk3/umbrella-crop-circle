@@ -101,7 +101,7 @@ namespace ZooManager
 
                 bindingSource1.DataSource = table;
 
-                table.Columns.RemoveAt(0);
+                //table.Columns.RemoveAt(0);
 
                 metroGrid1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
@@ -127,16 +127,18 @@ namespace ZooManager
                         else
                             query += " OR AnimalName = '" + temp[i] + "'";
                     }
-
+                    table.Clear();
                     GetData(query);
                 }
                 else
                 {
+                    table.Clear();
                     GetData("SELECT * FROM Animals WHERE AnimalName = '" + searchBox.Text + "'");
                 }
             }
             else
             {
+                table.Clear();
                 GetData("SELECT * FROM Animals");
             }
         }

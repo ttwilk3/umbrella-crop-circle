@@ -159,7 +159,15 @@ namespace ZooManager
         {
             foreach (DataGridViewRow item in metroGrid1.SelectedRows)
             {
-                metroGrid1.Rows.RemoveAt(item.Index);
+                try
+                {
+                    metroGrid1.Rows.RemoveAt(item.Index);
+                }
+                catch (Exception)
+                {
+                    //Try catch prevents from crashing, not sure how we should handle this.
+                }
+
             }
         }
 

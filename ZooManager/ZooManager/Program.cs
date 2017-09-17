@@ -12,6 +12,7 @@ namespace ZooManager
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// This is me testing (Jareth)
         [STAThread]
         static void Main()
         {

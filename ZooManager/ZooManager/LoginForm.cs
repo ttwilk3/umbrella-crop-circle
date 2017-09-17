@@ -43,7 +43,7 @@ namespace ZooManager
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            LoggedIn = "";
         }
 
         private void clearButton_Click(object sender, EventArgs e)

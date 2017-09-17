@@ -51,7 +51,8 @@ namespace ZooManager
             using (LoginForm frm = new LoginForm())
             {
                 frm.ShowDialog(this);
-                loggedInLabel.Text = "Welcome " + frm.LoggedIn;
+                if (frm.LoggedIn.Length > 0)
+                    loggedInLabel.Text = "Welcome " + frm.LoggedIn;
             }
 
             if (loggedInLabel.Text.Length > 0)
@@ -89,7 +90,11 @@ namespace ZooManager
         {
             try
             {
-                String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\Zoo.mdf;Integrated Security=True";
+
+                string path = System.IO.Directory.GetCurrentDirectory();
+                path += "\\Zoo.mdf";
+                //String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\Zoo.mdf;Integrated Security=True";
+                String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + ";Integrated Security=True";
 
                 dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 

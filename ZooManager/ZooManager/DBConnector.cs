@@ -11,23 +11,23 @@ namespace ZooManager
     class DBConnector : IDisposable
     {
 
-        public void updateData(DataTable table)
+        public void updateData(ref DataTable table, ref SqlDataAdapter dataAdapter)
         {
             try
             {
-                string selectCommand = "UPDATE Zoo";
+                string selectCommand = "SELECT * FROM Zoo";
                 string path = System.IO.Directory.GetCurrentDirectory();
                 path += "\\ZooManager.mdf";
                 //String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\Zoo.mdf;Integrated Security=True";
                 String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + ";Integrated Security=True";
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
+                dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
                 SqlCommandBuilder cb;
                 cb = new SqlCommandBuilder(dataAdapter);
 
                 //dataAdapter.DeleteCommand = cb.GetDeleteCommand(true);
-                dataAdapter.UpdateCommand = cb.GetUpdateCommand(true);
-                dataAdapter.InsertCommand = cb.GetInsertCommand(true);
+                //dataAdapter.UpdateCommand = cb.GetUpdateCommand(true);
+                //dataAdapter.InsertCommand = cb.GetInsertCommand(true);
 
                 dataAdapter.Update(table);
             }
@@ -64,6 +64,35 @@ namespace ZooManager
             catch (Exception ex)
             {
                 return "";
+            }
+        }
+
+        public void queryDatabase(string searchTerm, ref DataTable table)
+        {
+            try
+            {
+                string selectCommand = "";
+                if (searchTerm.Equals("ALL"))
+                    selectCommand = "SELECT AnimalName, NumberOfAnimal, NumberOfSickAnimal, NumberOfFedAnimal, FeedingTime FROM Zoo";
+                else    
+                    selectCommand = "SELECT AnimalName, NumberOfAnimal, NumberOfSickAnimal, NumberOfFedAnimal, FeedingTime FROM Zoo WHERE AnimalName='" + searchTerm + "'";
+                string path = System.IO.Directory.GetCurrentDirectory();
+                path += "\\ZooManager.mdf";
+                //String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\Zoo.mdf;Integrated Security=True";
+                String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + ";Integrated Security=True";
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
+
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+
+                table.Clear();
+
+                dataAdapter.Fill(table);
+            }
+            catch (Exception ex)
+            {
             }
         }
 

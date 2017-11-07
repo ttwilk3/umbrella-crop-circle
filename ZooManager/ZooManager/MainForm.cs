@@ -20,6 +20,8 @@ namespace ZooManager
         Timer myTime = new Timer();
 
         DataTable table = new DataTable();
+
+        SqlDataAdapter dataAdapter = new SqlDataAdapter();
         public bool LoggedIn { get; set; }
         public MainForm()
         {
@@ -120,7 +122,7 @@ namespace ZooManager
 
         private void GetData()
         {
-            string selectCommand = "SELECT Id, AnimalName, NumberOfAnimal, NumberOfSickAnimal, NumberOfFedAnimal, FeedingTime FROM Zoo";
+            string selectCommand = "SELECT AnimalName, NumberOfAnimal, NumberOfSickAnimal, NumberOfFedAnimal, FeedingTime FROM Zoo";
             try
             {
                 string path = System.IO.Directory.GetCurrentDirectory();
@@ -128,7 +130,7 @@ namespace ZooManager
                 //String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\Zoo.mdf;Integrated Security=True";
                 String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + ";Integrated Security=True";
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
+                dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
                 SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
 
@@ -159,7 +161,7 @@ namespace ZooManager
                 //String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\Zoo.mdf;Integrated Security=True";
                 String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + ";Integrated Security=True";
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
+                dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
                 SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
 
@@ -168,6 +170,8 @@ namespace ZooManager
                 dataAdapter.Fill(table);
 
                 List<string> Animals = new List<string>();
+
+                Animals.Add("ALL");
 
                 for (int i = 0; i < table.Rows.Count; i++)
                 {
@@ -192,13 +196,37 @@ namespace ZooManager
 
             using (DataTableController dtCont = new DataTableController())
             {
-                dtCont.update(table);
+                dtCont.update(ref table, ref dataAdapter);
             }
 
             //MetroFramework.MetroMessageBox.Show(this, "Updated Database");
             table.Clear();
             GetData();
             PopulateSearchBox();
+        }
+
+        private void insertButton_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = table.NewRow();
+
+            table.Rows.Add(newRow);
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in metroGrid1.SelectedRows)
+            {
+                metroGrid1.Rows.RemoveAt(item.Index);
+            }
+        }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            using (SearchController sCont = new SearchController())
+            {
+                string searchTerm = searchComboBox.SelectedItem.ToString();
+                sCont.filterData(searchTerm, ref table);
+            }
         }
     }
 }

@@ -37,7 +37,7 @@
             this.updateButton = new MetroFramework.Controls.MetroButton();
             this.deleteButton = new MetroFramework.Controls.MetroButton();
             this.insertButton = new MetroFramework.Controls.MetroButton();
-            this.searchButton = new MetroFramework.Controls.MetroButton();
+            this.filterButton = new MetroFramework.Controls.MetroButton();
             this.searchComboBox = new MetroFramework.Controls.MetroComboBox();
             this.loginLabel = new MetroFramework.Controls.MetroLabel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
@@ -87,6 +87,7 @@
             this.deleteButton.TabIndex = 3;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseSelectable = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // insertButton
             // 
@@ -96,15 +97,17 @@
             this.insertButton.TabIndex = 4;
             this.insertButton.Text = "Insert";
             this.insertButton.UseSelectable = true;
+            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
             // 
-            // searchButton
+            // filterButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(1385, 863);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(120, 50);
-            this.searchButton.TabIndex = 5;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseSelectable = true;
+            this.filterButton.Location = new System.Drawing.Point(1385, 863);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(120, 50);
+            this.filterButton.TabIndex = 5;
+            this.filterButton.Text = "Filter";
+            this.filterButton.UseSelectable = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
             // searchComboBox
             // 
@@ -190,7 +193,7 @@
             this.Controls.Add(this.metroGrid1);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.searchComboBox);
-            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.filterButton);
             this.Controls.Add(this.insertButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
@@ -217,7 +220,7 @@
         private MetroFramework.Controls.MetroButton updateButton;
         private MetroFramework.Controls.MetroButton deleteButton;
         private MetroFramework.Controls.MetroButton insertButton;
-        private MetroFramework.Controls.MetroButton searchButton;
+        private MetroFramework.Controls.MetroButton filterButton;
         private MetroFramework.Controls.MetroComboBox searchComboBox;
         private MetroFramework.Controls.MetroLabel loginLabel;
         private MetroFramework.Controls.MetroGrid metroGrid1;

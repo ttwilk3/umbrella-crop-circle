@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,11 @@ namespace ZooManager
 {
     class DataTableController : IDisposable
     {
-        public void update(DataTable table)
+        public void update(ref DataTable table, ref SqlDataAdapter dataAdapter)
         {
             using (DBConnector dbCon = new DBConnector())
             {
-                dbCon.updateData(table);
+                dbCon.updateData(ref table, ref dataAdapter);
             }
         }
         #region IDisposable Support

@@ -23,6 +23,8 @@ namespace ZooManager
 
         SqlDataAdapter dataAdapter = new SqlDataAdapter();
         public bool LoggedIn { get; set; }
+
+        public int UserPIN { get; set; }
         public MainForm()
         {
             InitializeComponent();
@@ -60,6 +62,8 @@ namespace ZooManager
             {
                 logCont.openLoginForm();
 
+                UserPIN = logCont.UserPIN;
+
                 if (logCont.UserName != null && logCont.UserName.Length > 0)
                 {
                     string welcomeMessage = "Welcome " + logCont.UserName;
@@ -96,7 +100,7 @@ namespace ZooManager
         {
             using (LogoutController logoutCont = new LogoutController())
             {
-                logoutCont.Logout();
+                logoutCont.Logout(UserPIN);
 
                 LoggedIn = false;
 

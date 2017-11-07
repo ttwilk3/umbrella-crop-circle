@@ -11,6 +11,8 @@ namespace ZooManager
     class DBConnector : IDisposable
     {
 
+        public int UserPIN { get; set; }
+
         public void updateData(ref DataTable table, ref SqlDataAdapter dataAdapter)
         {
             try
@@ -57,6 +59,8 @@ namespace ZooManager
 
                 string UserName = table.Rows[0][0].ToString();
 
+                UserPIN = Int32.Parse(PIN);
+
                 this.Dispose(true);
 
                 return UserName;
@@ -93,6 +97,31 @@ namespace ZooManager
             }
             catch (Exception ex)
             {
+            }
+        }
+
+        public void log(int PIN, string Time, string Action)
+        {
+            try
+            {
+                string insertCommand = "INSERT INTO UserLogin (PIN, Time, Action) VALUES (" + PIN + ", '" + Time + "', '" + Action + "')";
+
+                string path = System.IO.Directory.GetCurrentDirectory();
+                path += "\\ZooManager.mdf";
+                //String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\lohru\Source\Repos\umbrella-crop-circle\ZooManager\ZooManager\Zoo.mdf;Integrated Security=True";
+                String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + ";Integrated Security=True";
+
+                SqlCommand ins = new SqlCommand(insertCommand);
+
+                ins.Connection = new SqlConnection(connectionString);
+
+                ins.Connection.Open();
+
+                ins.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
             }
         }
 

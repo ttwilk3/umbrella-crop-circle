@@ -8,9 +8,12 @@ namespace ZooManager
 {
     class LogoutController : IDisposable
     {
-        public void Logout()
+        public void Logout(int PIN)
         {
-
+            using (DBConnector dbCon = new DBConnector())
+            {
+                dbCon.log(PIN, DateTime.Now.ToString("h:mm:ss tt"), "Logout");
+            }
         }
 
         #region IDisposable Support

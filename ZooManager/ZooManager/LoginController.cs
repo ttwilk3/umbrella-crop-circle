@@ -10,6 +10,7 @@ namespace ZooManager
 {
     class LoginController : IDisposable
     {
+        public int UserPIN { get; set; }
         public string UserName { get; set; }
         public void openLoginForm()
         {
@@ -22,6 +23,8 @@ namespace ZooManager
                     {
                         string PIN = frm.LoggedIn;
                         UserName = dbCon.verifyAccountPin(PIN);
+                        UserPIN = dbCon.UserPIN;
+                        dbCon.log(UserPIN, DateTime.Now.ToString("h:mm:ss tt"), "Login");
                     }
                 }
             }

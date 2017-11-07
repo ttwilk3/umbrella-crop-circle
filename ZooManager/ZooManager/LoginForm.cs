@@ -16,27 +16,7 @@ namespace ZooManager
     {
         public LoginForm()
         {
-            Logins.Add(new Login("723901", "Dr.Onyeka"));
-            Logins.Add(new Login("449123", "Tyler"));
-            Logins.Add(new Login("234192", "Robert"));
-            Logins.Add(new Login("143232", "Jareth"));
-            Logins.Add(new Login("592120", "Morgan"));
-            Logins.Add(new Login("712387", "Jordan"));
             InitializeComponent();
-        }
-
-        List<Login> Logins = new List<Login>();
-
-        private class Login
-        {
-            public string pin { get; set; }
-            public string Name { get; set; }
-
-            public Login(string _pin, string _Name)
-            {
-                pin = _pin;
-                Name = _Name;
-            }
         }
 
         public string LoggedIn { get; set; }
@@ -53,25 +33,8 @@ namespace ZooManager
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            Login temp = null;
-
-            foreach (Login l in Logins)
-            {
-                if (l.pin.Equals(loginCode.Text))
-                {
-                    temp = l;
-                }
-            }
-
-            if (temp == null)
-            {
-                MetroFramework.MetroMessageBox.Show(this, "Please enter a valid pin.");
-            }
-            else
-            {
-                LoggedIn = temp.Name;
-                this.Close();
-            }
+            LoggedIn = loginCode.Text;
+            this.Close();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)

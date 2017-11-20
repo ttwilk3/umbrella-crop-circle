@@ -73,6 +73,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="Clock.cs" />
     <Compile Include="DataTableController.cs" />
     <Compile Include="DBConnector.cs" />
     <Compile Include="LoginController.cs" />

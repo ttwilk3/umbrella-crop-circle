@@ -22,6 +22,8 @@ namespace ZooManager
         DataTable table = new DataTable();
 
         SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+        Clock myClock = new Clock();
         public bool LoggedIn { get; set; }
 
         public int UserPIN { get; set; }
@@ -120,7 +122,7 @@ namespace ZooManager
 
         private void setTime(object sender, EventArgs e)
         {
-            string time = DateTime.Now.ToString("h:mm:ss tt");
+            string time = myClock.getCurrentTime();
             timeLabel.Text = "Current Time: " + time;
         }
 
